@@ -12,7 +12,7 @@ function computerSelection() {
 
 function playerSelection() {
   let selection = prompt(
-    "Please select either Rock, Paper, or scissor"
+    "Please select either Rock, Paper, or Scissor"
   ).toUpperCase();
   return selection === "ROCK" ||
     selection === "PAPER" ||
