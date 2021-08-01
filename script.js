@@ -5,11 +5,10 @@ function computerSelection() {
   } else if (randomNum === 1) {
     return "PAPER";
   } else {
-    console.log("helo");
     return "SCISSOR";
   }
 }
-
+/*
 function playerSelection() {
   let selection = prompt(
     "Please select either Rock, Paper, or Scissor"
@@ -20,26 +19,53 @@ function playerSelection() {
     ? selection
     : alert("Input not accepted. Please check your spelling!");
 }
-
+*/
 function playRound(PS, CS) {
   if (PS === CS) {
-    console.log("Draw!");
+    result.textContent = `You picked ${PS} and the computer picked ${CS}. The result is a draw!`;
   } else if (PS === undefined) {
     console.log("Game aborted!");
   } else if (PS === "PAPER" && CS === "ROCK") {
-    console.log("Player wins!");
+    result.textContent = `You picked ${PS} and the computer picked ${CS}. You WIN!`;
+    incPlayerScore()
   } else if (PS === "ROCK" && CS === "SCISSOR") {
-    console.log("Player wins!");
+    result.textContent = `You picked ${PS} and the computer picked ${CS}. You WIN!`;
+    incPlayerScore()
   } else if (PS === "SCISSOR" && CS === "PAPER") {
-    console.log("Player wins!");
+    result.textContent = `You picked ${PS} and the computer picked ${CS}. You WIN!`;
+    incPlayerScore()
   } else {
-    console.log("Computer wins!");
+    result.textContent = `You picked ${PS} and the computer picked ${CS}. The Computer WINS!`;
   }
 }
 
-function game() {
-  let player = playerSelection();
+function incPlayerScore() {
+  playerScore += 1;
+  announceScore(playerScore);
+  if (playerScore >= 5 && (dontRunAgain === 0)) {
+    const secretCode = document.querySelector('.secretCode')
+    let randomNumber = Math.floor(Math.random() * 1000);
+    secretCode.textContent = `You secret code is ${randomNumber}`;
+    dontRunAgain = 1;
+  }
+}
+
+function announceScore (num) {
+  const score = document.querySelector('.score');
+  score.textContent = `Your score is: ${num}.`
+}
+
+function game(e) {
+  let player = e.explicitOriginalTarget.innerText;
   let computer = computerSelection();
-  console.log(`You picked ${player}, while the computer picked ${computer}.`);
+  //console.log(`You picked ${player}, while the computer picked ${computer}.`);
+
   playRound(player, computer);
 }
+let dontRunAgain = 0;
+let playerScore = 0;
+const result = document.querySelector('.result');
+const btns = document.querySelectorAll('button');
+btns.forEach(btn => btn.addEventListener('click', game));
+/*btn.addEventListener('click', e => console.log(e.explicitOriginalTarget.innerText));
+const btnValue= */
