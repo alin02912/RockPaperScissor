@@ -27,15 +27,19 @@ function playRound(PS, CS) {
     console.log("Game aborted!");
   } else if (PS === "PAPER" && CS === "ROCK") {
     result.textContent = `You picked ${PS} and the computer picked ${CS}. You WIN!`;
-    incPlayerScore()
+    incPlayerScore();
+    alert(`You picked ${PS} and the computer picked ${CS}. You WIN!`);
   } else if (PS === "ROCK" && CS === "SCISSOR") {
     result.textContent = `You picked ${PS} and the computer picked ${CS}. You WIN!`;
     incPlayerScore()
+    alert(`You picked ${PS} and the computer picked ${CS}. You WIN!`);
   } else if (PS === "SCISSOR" && CS === "PAPER") {
     result.textContent = `You picked ${PS} and the computer picked ${CS}. You WIN!`;
     incPlayerScore()
+    alert(`You picked ${PS} and the computer picked ${CS}. You WIN!`);
   } else {
-    result.textContent = `You picked ${PS} and the computer picked ${CS}. The Computer WINS!`;
+    result.textContent = `You picked ${PS} and the computer picked ${CS}. The Computer WINS! :-(`;
+    alert(`You picked ${PS} and the computer picked ${CS}. The Computer WINS! :-(`);
   }
 }
 
