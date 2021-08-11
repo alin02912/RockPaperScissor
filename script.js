@@ -49,7 +49,7 @@ function incPlayerScore() {
   if (playerScore >= 5 && (dontRunAgain === 0)) {
     const secretCode = document.querySelector('.secretCode')
     let randomNumber = Math.floor(Math.random() * 1000);
-    secretCode.textContent = `You secret code is ${randomNumber}`;
+    secretCode.textContent = `You secret code is 99${randomNumber}`;
     dontRunAgain = 1;
   }
 }
@@ -60,7 +60,8 @@ function announceScore (num) {
 }
 
 function game(e) {
-  let player = e.explicitOriginalTarget.innerText;
+  console.log(e.srcElement.innerText)
+  let player = (e.explicitOriginalTarget?.innerText ?? e.srcElement.innerText);
   let computer = computerSelection();
   //console.log(`You picked ${player}, while the computer picked ${computer}.`);
 
